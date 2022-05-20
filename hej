@@ -3,114 +3,114 @@ using System;
 
 namespace Uppdrag3
 {
-    internal class Main
+    public static class Second
     {
-        static class MainClass
+
+
+        // Function greeting the user
+        public static void Greeting()
         {
-            public static void Main(string[] args)
+            Console.WriteLine("Hej och välkommen till Alvas bibliotek!");
+            Console.WriteLine("     ");
+            Console.WriteLine("     ");
+        }
+        // Functions for the choices in the menu 
+        public static void FirstChoice(string title)
+        {
+            Console.Clear();
+            Console.WriteLine("boken " + title + " är nu registrerad!");
+
+            Console.ReadKey();
+        }
+        public static void SecondChoice()
+        {
+            Console.Clear();
+            Console.WriteLine("Du valde att hantera utlånade böcker!");
+
+            //List of books
+            Console.WriteLine("  ");
+            Console.WriteLine("böcker som är utlånade just nu:");
+            Console.WriteLine("Mina första år, Vi var lögnare, Hobbit, Harry Potter, ");
+            Console.ReadKey();
+        }
+        public static void ThirdChoice()
+        {
+            Console.Clear();
+            Console.WriteLine("Du valde returnera böcker, sök efter böcker & boka böcker!");
+            Console.WriteLine("  ");
+            Console.WriteLine("  ");
+            //Options of service
+            Console.WriteLine("returnera böcker = 1, sök efter böcker = 2, boka böcker = 3");
+
+            Console.WriteLine("Skriv in ditt val!");
+            Console.WriteLine("  ");
+            //this is an example of try-parse
+            try
             {
-
-                string[] menuOptions = new string[] { "Registrera ny bok\t\t", "Hantera utlånade böcker\t\t", "Returnera böcker, sök efter böcker & boka böcker\t\t", "Hantera personal\t\t", "Avsluta\t\t" };
-                int menuSelect = 0;
-
-                //menu
-                while (true)
+                int.TryParse(Console.ReadLine(), out int x);
+                if (x == 1)
                 {
                     Console.Clear();
-                    Console.CursorVisible = false;
+                    Console.WriteLine("Du valde returnera böcker!");
 
-                    Second.Greeting();
-
-                    if (menuSelect == 0)
-                    {
-
-                        Console.WriteLine(menuOptions[0] + "<--");
-                        Console.WriteLine(menuOptions[1]);
-                        Console.WriteLine(menuOptions[2]);
-                        Console.WriteLine(menuOptions[3]);
-                        Console.WriteLine(menuOptions[4]);
-                    }
-                    else if (menuSelect == 1)
-                    {
-                        Console.WriteLine(menuOptions[0]);
-                        Console.WriteLine(menuOptions[1] + "<--");
-                        Console.WriteLine(menuOptions[2]);
-                        Console.WriteLine(menuOptions[3]);
-                        Console.WriteLine(menuOptions[4]);
-                    }
-                    else if (menuSelect == 2)
-                    {
-                        Console.WriteLine(menuOptions[0]);
-                        Console.WriteLine(menuOptions[1]);
-                        Console.WriteLine(menuOptions[2] + "<--");
-                        Console.WriteLine(menuOptions[3]);
-                        Console.WriteLine(menuOptions[4]);
-                    }
-
-                    else if (menuSelect == 3)
-                    {
-                        Console.WriteLine(menuOptions[0]);
-                        Console.WriteLine(menuOptions[1]);
-                        Console.WriteLine(menuOptions[2]);
-                        Console.WriteLine(menuOptions[3] + "<--");
-                        Console.WriteLine(menuOptions[4]);
-                    }
-                    else if (menuSelect == 4)
-                    {
-                        Console.WriteLine(menuOptions[0]);
-                        Console.WriteLine(menuOptions[1]);
-                        Console.WriteLine(menuOptions[2]);
-                        Console.WriteLine(menuOptions[3]);
-                        Console.WriteLine(menuOptions[4] + "<--");
-                    }
-
-                    // Select menu options with up and down arrowkeys
-                    var keyPressed = Console.ReadKey();
-
-                    if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect != menuOptions.Length - 1)
-                    {
-                        menuSelect++;
-                    }
-                    else if (keyPressed.Key == ConsoleKey.UpArrow && menuSelect >= 1)
-                    {
-                        menuSelect--;
-                    }
-                    else if (keyPressed.Key == ConsoleKey.Enter)
-                    {
-                        switch (menuSelect)
-                        {
-                            case 0:
-                                //Ask for user's book title
-                                Console.WriteLine("  ");
-                                Console.Write("Registrera boktiteln: ");
-                                string title = Console.ReadLine();
-                                Second.FirstChoice(title);
-                                break;
-                            case 1:
-                                Second.SecondChoice();
-                                break;
-                            case 2:
-                                Second.ThirdChoice();
-                                break;
-                            case 3:
-                                Second.FourthChoice();
-                                break;
-                            case 4:
-                                Second.FifthChoice();
-                                break;
-
-                        }
-
-                        //To exit the program
-                        Console.WriteLine("  ");
-                        Console.WriteLine("Tryck Enter for att gå vidare...");
-                        Console.ReadLine();
-                    }
                 }
+                else if (x == 2)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Du valde sök efter böcker!");
+
+                }
+                else if (x == 3)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Du valde boka böcker!");
+
+                }
+                else
+                {
+                    Console.WriteLine("Inget av de ovanstående valen gäller");
+                }
+
+                Console.ReadKey();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+        public static void FourthChoice()
+        {
+            Console.Clear();
+            Console.WriteLine("Du valde att hantera personal!");
+
+            //List of personell
+            Console.WriteLine("  ");
+            Console.WriteLine("Personal:");
+           
+            string[] personellArray = new string[] { "Magnus", "Rune", "Elsa", "Sofia" };
+
+            foreach(string personell in personellArray)
+            {
+                Console.Write(personell);
+                Console.WriteLine(" ");
             }
 
 
 
+
+            Console.ReadKey();
         }
+        public static void FifthChoice()
+        {
+            //exit the program
+            Console.Clear();
+            Console.WriteLine("Du valde att avsluta programmet! Hejdå!");
+            Console.ReadKey();
+            Environment.Exit(1);
+
+        }
+
     }
 }
