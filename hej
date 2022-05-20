@@ -1,0 +1,116 @@
+using System;
+
+
+namespace Uppdrag3
+{
+    internal class Main
+    {
+        static class MainClass
+        {
+            public static void Main(string[] args)
+            {
+
+                string[] menuOptions = new string[] { "Registrera ny bok\t\t", "Hantera utlånade böcker\t\t", "Returnera böcker, sök efter böcker & boka böcker\t\t", "Hantera personal\t\t", "Avsluta\t\t" };
+                int menuSelect = 0;
+
+                //menu
+                while (true)
+                {
+                    Console.Clear();
+                    Console.CursorVisible = false;
+
+                    Second.Greeting();
+
+                    if (menuSelect == 0)
+                    {
+
+                        Console.WriteLine(menuOptions[0] + "<--");
+                        Console.WriteLine(menuOptions[1]);
+                        Console.WriteLine(menuOptions[2]);
+                        Console.WriteLine(menuOptions[3]);
+                        Console.WriteLine(menuOptions[4]);
+                    }
+                    else if (menuSelect == 1)
+                    {
+                        Console.WriteLine(menuOptions[0]);
+                        Console.WriteLine(menuOptions[1] + "<--");
+                        Console.WriteLine(menuOptions[2]);
+                        Console.WriteLine(menuOptions[3]);
+                        Console.WriteLine(menuOptions[4]);
+                    }
+                    else if (menuSelect == 2)
+                    {
+                        Console.WriteLine(menuOptions[0]);
+                        Console.WriteLine(menuOptions[1]);
+                        Console.WriteLine(menuOptions[2] + "<--");
+                        Console.WriteLine(menuOptions[3]);
+                        Console.WriteLine(menuOptions[4]);
+                    }
+
+                    else if (menuSelect == 3)
+                    {
+                        Console.WriteLine(menuOptions[0]);
+                        Console.WriteLine(menuOptions[1]);
+                        Console.WriteLine(menuOptions[2]);
+                        Console.WriteLine(menuOptions[3] + "<--");
+                        Console.WriteLine(menuOptions[4]);
+                    }
+                    else if (menuSelect == 4)
+                    {
+                        Console.WriteLine(menuOptions[0]);
+                        Console.WriteLine(menuOptions[1]);
+                        Console.WriteLine(menuOptions[2]);
+                        Console.WriteLine(menuOptions[3]);
+                        Console.WriteLine(menuOptions[4] + "<--");
+                    }
+
+                    // Select menu options with up and down arrowkeys
+                    var keyPressed = Console.ReadKey();
+
+                    if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect != menuOptions.Length - 1)
+                    {
+                        menuSelect++;
+                    }
+                    else if (keyPressed.Key == ConsoleKey.UpArrow && menuSelect >= 1)
+                    {
+                        menuSelect--;
+                    }
+                    else if (keyPressed.Key == ConsoleKey.Enter)
+                    {
+                        switch (menuSelect)
+                        {
+                            case 0:
+                                //Ask for user's book title
+                                Console.WriteLine("  ");
+                                Console.Write("Registrera boktiteln: ");
+                                string title = Console.ReadLine();
+                                Second.FirstChoice(title);
+                                break;
+                            case 1:
+                                Second.SecondChoice();
+                                break;
+                            case 2:
+                                Second.ThirdChoice();
+                                break;
+                            case 3:
+                                Second.FourthChoice();
+                                break;
+                            case 4:
+                                Second.FifthChoice();
+                                break;
+
+                        }
+
+                        //To exit the program
+                        Console.WriteLine("  ");
+                        Console.WriteLine("Tryck Enter for att gå vidare...");
+                        Console.ReadLine();
+                    }
+                }
+            }
+
+
+
+        }
+    }
+}
